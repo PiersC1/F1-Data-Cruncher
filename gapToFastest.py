@@ -7,11 +7,10 @@ from fastf1.core import Laps
 
 fastf1.plotting.setup_mpl(mpl_timedelta_support=True, color_scheme=None)
 
-year = 2022
-# Errors when the round changes on Line 24, check LAPS()
-round = 2
+year = 2025
+round = 24
 
-session = fastf1.get_session(year, round, 'Q')
+session = fastf1.get_session(year, round, 2)
 session.load()
 
 drivers = pd.unique(session.laps['Driver'])
@@ -41,5 +40,5 @@ ax.set_axisbelow(True)
 ax.xaxis.grid(True, which='major', linestyle = '--', color = 'black', zorder = -1000)
 
 lap_time_string = strftimedelta(pole_lap['LapTime'], '%m:%s.%ms')
-plt.suptitle(f"{session.event['EventName']} {session.event.year} Qualifying\n Fastest Lap: {lap_time_string} ({pole_lap['Driver']})")
+plt.suptitle(f"{session.event['EventName']} {session.event.year} {session.name}\n Fastest Lap: {lap_time_string} ({pole_lap['Driver']})")
 plt.show()
