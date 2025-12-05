@@ -13,7 +13,9 @@ event = races.get_event_by_round(raceNum)
 race = event.get_session(2)
 race.load()
 drivers = ['NOR', 'VER', 'PIA']
-driver_laps = race.laps.pick_drivers(drivers).reset_index() 
+
+driver_laps = race.laps.pick_drivers(drivers).pick_quicklaps(threshold=1.20).reset_index() 
+
 #.pick_quicklaps() go between pick_drivers() and reset_index() when analysing not practice
 
 fig, ax = plt.subplots(figsize=(8,8))
