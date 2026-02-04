@@ -1,6 +1,7 @@
 import fastf1
 import pandas as pd
 import math
+import matplotlib.pyplot as plt
 
 
 
@@ -8,6 +9,13 @@ import math
 def pretty_print(dr):
     for d in dr:
         print(f"Driver: {number_name[d]} Points: {dr[d]}")
+    x_vals = dr.keys()
+    y_vals = dr.values()
+    plt.bar(x_vals, y_vals)
+    plt.xlabel("Drivers")
+    plt.ylabel("Points")
+    plt.title("If points were awarded every lap")
+    plt.show()
 
 year = 2025
 points_by_pos = {
