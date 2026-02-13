@@ -17,10 +17,12 @@
 1. Get teammate delta over the season (NOR -0.1 PIA +0.1 <-- This indicates that NOR was 0.1s faster on average over the season)
 2. Because of how deltas work when stored this way the mean will be 0.
 3. Pick a default quali performance numer (e.g. 95)
-4. Delta/2 + Default + 20-avg quali position/5* (to try and not punish good drivers in good cars)
+4. Delta*5 + Default + 20-avg quali position/5* (to try and not punish good drivers in good cars)
 
 # DevLog:
 - I've implemented the data pulling architecture.
 - I'm thinking that iterating over the entire season and just gathering the raw laptime for each player.
 - Then load teammates, and go through their results race by race and find their overall delta. Then go from there.
 - Ok nevermind, the way that I've ended up getting the drivers lap time makes more sense to do the delta calculations in place and round by round
+- I've decided to split this into two seperate parts. The data gathering in one file, and the analysis in a seperate file. This is so that I can do some manual data cleaning between the stages because Alpine had multiple drivers. For now Im just going to combine Colapinto and Doohan into one driver b/c they had similar performance.
+- Probably should've used Notebooks but I'm comitted at this point
